@@ -8,8 +8,14 @@
         "build": "tsc && node develop/build.js",
         "start": "node dist/index.js",
         "swagger-autogen": "node develop/swagger.js",
-        "postinstall": "npm run swagger-autogen"
+        "postinstall": "npm run swagger-autogen",
+        "add-build": "git add dist"
     },
+    "pre-commit": [
+      "swagger-autogen",
+      "build",
+      "add-build"
+    ],
     "devDependencies": {
         "@types/bcryptjs": "^2.4.6",
         "@types/cors": "^2.8.16",
